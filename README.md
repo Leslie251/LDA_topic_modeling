@@ -1,37 +1,28 @@
-This Python script applies the Latent Dirichlet Allocation (LDA) topic modeling algorithm to a set of text data in an Excel file. It also preprocesses the text data by removing stop words, punctuation marks, and translating non-English text to English.
+# LDA Topic Modeling on Intent Data
 
-Dependencies
+This is a Python script that applies Latent Dirichlet Allocation (LDA) topic modeling to intent data and outputs the main topic and associated keywords for each intent in English, Simplified Chinese, and Traditional Chinese. The data is read in from an Excel file and the LDA results are written to a new Excel file.
 
-  -pandas
-  
-  -nltk
-  
-  -gensim
-  
-  -googletrans
+## Requirements
 
-Functionality
+To run the script, you will need the following Python packages:
 
-  -read_excel(file_path): Reads data from an Excel file and returns a pandas dataframe.
-  
-  -download_stopwords(language): Downloads stopwords for a specific language and returns a list of stop words.
-  
-  -translate_text(text, target_language): Translates text to a target language using the Googletrans library and returns the translated text.
-  
-  -preprocess_text(df, stop_words): Preprocesses the text data by detecting non-English text, translating it to English, tokenizing the text, removing stop words and punctuation marks, and returning a list of preprocessed documents.
-  
-  -apply_lda(texts): Applies the LDA topic modeling algorithm to the preprocessed text data using the Gensim library and prints the main topic and associated keywords in English, Chinese, and Traditional Chinese.
+- pandas
+- nltk
+- gensim
+- googletrans
 
-Usage
+You will also need NLTK's stopwords data. You can download it by running `nltk.download('stopwords')` in your Python environment.
 
-  -Install the required libraries using pip install.
-  
-  -Save the text data in an Excel file with a column named 'chats'.
-  
-  -Update the file_path variable in the read_excel function to point to the location of the Excel file.
-  
-  -Run the Python script using a Python interpreter.
-  
-  -The script will print the main topic and associated keywords in English, Chinese, and Traditional Chinese.
+## Usage
 
-Note: The Googletrans library may have usage limits and may not always provide accurate translations. It is recommended to use a paid translation service for more accurate results.
+1. Install the required packages and download the stopwords data as described above.
+2. Place your intent data in an Excel file named `exported_training_set.xlsx` in the same directory as the script.
+3. Run the script using `python lda_topic_modeling.py`.
+4. The script will output the main topic and associated keywords for each intent in English, Simplified Chinese, and Traditional Chinese to the console and write the results to an Excel file named `lda_results.xlsx` in the same directory as the script.
+
+## Notes
+
+- The code assumes that the intent data is in an Excel file named `exported_training_set.xlsx` with columns named `intent_name` and `userExpression`.
+- The code currently applies LDA with a fixed number of topics of 1, which means it will only output the main topic and associated keywords for each intent.
+- The code uses the Google Translate API to translate non-English text to English and then to Simplified Chinese and Traditional Chinese. You will need to provide your own API key if you wish to use this feature.
+- The code removes stopwords and punctuation marks from the text data before applying LDA. You can modify the `download_stopwords` and `preprocess_intent` functions to use different stopwords data or apply different text preprocessing steps if desired.
