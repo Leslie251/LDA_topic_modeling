@@ -1,3 +1,12 @@
+# Chat Transcripts LDA Topic Modeling
+# Developed by [Leslie Ng] on Jul 03, 2023
+
+# Credit:
+# - Pandas library: https://pandas.pydata.org/
+# - NLTK library: https://www.nltk.org/
+# - Gensim library: https://radimrehurek.com/gensim/
+# - Googletrans library: https://pypi.org/project/googletrans/
+
 import re
 import string
 import pandas as pd
